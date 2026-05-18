@@ -1,0 +1,297 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 1100" font-family="Segoe UI, Arial, sans-serif">
+  <defs>
+    <style>
+      .tbl-bg     { fill: #ffffff; stroke: #1f4e79; stroke-width: 2; }
+      .tbl-bg-special { fill: #fff8e1; stroke: #b06b00; stroke-width: 2; }
+      .tbl-header { fill: #1f4e79; }
+      .tbl-header-special { fill: #b06b00; }
+      .tbl-title  { fill: #ffffff; font-size: 15px; font-weight: bold; }
+      .col-pk     { fill: #c62828; font-weight: bold; font-size: 12px; }
+      .col-fk     { fill: #1565c0; font-weight: bold; font-size: 12px; }
+      .col-uk     { fill: #6a1b9a; font-weight: bold; font-size: 12px; }
+      .col-norm   { fill: #333333; font-size: 12px; }
+      .col-type   { fill: #888888; font-size: 11px; }
+      .rel-line   { fill: none; stroke: #1f4e79; stroke-width: 1.5; }
+      .rel-trig   { fill: none; stroke: #b06b00; stroke-width: 1.8; stroke-dasharray: 6 4; }
+      .rel-label  { fill: #1f4e79; font-size: 11px; font-style: italic; }
+      .rel-label-trig { fill: #b06b00; font-size: 11px; font-style: italic; font-weight: bold; }
+      .legend-text{ fill: #333333; font-size: 12px; }
+      .title-main { fill: #1f4e79; font-size: 22px; font-weight: bold; }
+      .subtitle   { fill: #555555; font-size: 13px; font-style: italic; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f4e79"/>
+    </marker>
+    <marker id="arrow-trig" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#b06b00"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="750" y="35" text-anchor="middle" class="title-main">YemekSiparisDB — Varlık-İlişki Diyagramı</text>
+  <text x="750" y="55" text-anchor="middle" class="subtitle">VTYS-1 Dönem Projesi · Microsoft SQL Server · "Askıda Yemek" modülü dahil</text>
+
+  <!-- ========================= TABLES ========================= -->
+
+  <!-- 1. MUSTERILER -->
+  <g transform="translate(50, 100)">
+    <rect class="tbl-bg" width="260" height="220" rx="6"/>
+    <rect class="tbl-header" width="260" height="28" rx="6"/>
+    <text class="tbl-title" x="130" y="19" text-anchor="middle">MUSTERILER</text>
+    <text x="10" y="48"  class="col-pk">PK MusteriID</text>             <text x="180" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-norm">Ad</text>                     <text x="180" y="66" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="84"  class="col-norm">Soyad</text>                  <text x="180" y="84" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="102" class="col-uk">UQ Email</text>                 <text x="180" y="102" class="col-type">NVARCHAR(120)</text>
+    <text x="10" y="120" class="col-uk">UQ Telefon</text>               <text x="180" y="120" class="col-type">VARCHAR(15)</text>
+    <text x="10" y="138" class="col-norm">SifreHash</text>              <text x="180" y="138" class="col-type">NVARCHAR(255)</text>
+    <text x="10" y="156" class="col-norm">DogumTarihi</text>            <text x="180" y="156" class="col-type">DATE</text>
+    <text x="10" y="174" class="col-norm">KayitTarihi</text>            <text x="180" y="174" class="col-type">DATETIME</text>
+    <text x="10" y="192" class="col-norm">IhtiyacSahibiOnayli</text>    <text x="180" y="192" class="col-type">BIT</text>
+    <text x="10" y="210" class="col-norm">IsActive</text>               <text x="180" y="210" class="col-type">BIT</text>
+  </g>
+
+  <!-- 2. ADRESLER -->
+  <g transform="translate(370, 100)">
+    <rect class="tbl-bg" width="240" height="160" rx="6"/>
+    <rect class="tbl-header" width="240" height="28" rx="6"/>
+    <text class="tbl-title" x="120" y="19" text-anchor="middle">ADRESLER</text>
+    <text x="10" y="48"  class="col-pk">PK AdresID</text>      <text x="160" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-fk">FK MusteriID</text>    <text x="160" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-norm">Baslik</text>         <text x="160" y="84" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="102" class="col-norm">Sehir</text>          <text x="160" y="102" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="120" class="col-norm">Ilce</text>           <text x="160" y="120" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="138" class="col-norm">AcikAdres</text>      <text x="160" y="138" class="col-type">NVARCHAR(255)</text>
+  </g>
+
+  <!-- 3. RESTORANLAR -->
+  <g transform="translate(660, 100)">
+    <rect class="tbl-bg" width="260" height="200" rx="6"/>
+    <rect class="tbl-header" width="260" height="28" rx="6"/>
+    <text class="tbl-title" x="130" y="19" text-anchor="middle">RESTORANLAR</text>
+    <text x="10" y="48"  class="col-pk">PK RestoranID</text>   <text x="180" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-norm">Ad</text>            <text x="180" y="66" class="col-type">NVARCHAR(100)</text>
+    <text x="10" y="84"  class="col-uk">UQ Telefon</text>      <text x="180" y="84" class="col-type">VARCHAR(15)</text>
+    <text x="10" y="102" class="col-norm">Adres</text>         <text x="180" y="102" class="col-type">NVARCHAR(255)</text>
+    <text x="10" y="120" class="col-norm">MutfakTuru</text>    <text x="180" y="120" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="138" class="col-norm">Puan ✓CHECK</text>   <text x="180" y="138" class="col-type">DECIMAL(3,2)</text>
+    <text x="10" y="156" class="col-norm">ToplamCiro</text>    <text x="180" y="156" class="col-type">DECIMAL(14,2)</text>
+    <text x="10" y="174" class="col-norm">Acilis/Kapanis</text><text x="180" y="174" class="col-type">TIME</text>
+    <text x="10" y="192" class="col-norm">IsActive</text>      <text x="180" y="192" class="col-type">BIT</text>
+  </g>
+
+  <!-- 4. KATEGORILER -->
+  <g transform="translate(970, 100)">
+    <rect class="tbl-bg" width="220" height="100" rx="6"/>
+    <rect class="tbl-header" width="220" height="28" rx="6"/>
+    <text class="tbl-title" x="110" y="19" text-anchor="middle">KATEGORILER</text>
+    <text x="10" y="48"  class="col-pk">PK KategoriID</text>   <text x="140" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-uk">UQ KategoriAd</text>   <text x="140" y="66" class="col-type">NVARCHAR(50)</text>
+  </g>
+
+  <!-- 5. KURYELER -->
+  <g transform="translate(1240, 100)">
+    <rect class="tbl-bg" width="240" height="180" rx="6"/>
+    <rect class="tbl-header" width="240" height="28" rx="6"/>
+    <text class="tbl-title" x="120" y="19" text-anchor="middle">KURYELER</text>
+    <text x="10" y="48"  class="col-pk">PK KuryeID</text>      <text x="160" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-norm">Ad</text>            <text x="160" y="66" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="84"  class="col-norm">Soyad</text>         <text x="160" y="84" class="col-type">NVARCHAR(50)</text>
+    <text x="10" y="102" class="col-uk">UQ Telefon</text>      <text x="160" y="102" class="col-type">VARCHAR(15)</text>
+    <text x="10" y="120" class="col-norm">AracTipi ✓CHECK</text><text x="160" y="120" class="col-type">NVARCHAR(20)</text>
+    <text x="10" y="138" class="col-norm">Plaka</text>         <text x="160" y="138" class="col-type">VARCHAR(15)</text>
+    <text x="10" y="156" class="col-norm">IsActive</text>      <text x="160" y="156" class="col-type">BIT</text>
+  </g>
+
+  <!-- 6. URUNLER -->
+  <g transform="translate(970, 240)">
+    <rect class="tbl-bg" width="240" height="180" rx="6"/>
+    <rect class="tbl-header" width="240" height="28" rx="6"/>
+    <text class="tbl-title" x="120" y="19" text-anchor="middle">URUNLER</text>
+    <text x="10" y="48"  class="col-pk">PK UrunID</text>         <text x="160" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-fk">FK RestoranID</text>     <text x="160" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-fk">FK KategoriID</text>     <text x="160" y="84" class="col-type">INT</text>
+    <text x="10" y="102" class="col-norm">UrunAd</text>          <text x="160" y="102" class="col-type">NVARCHAR(100)</text>
+    <text x="10" y="120" class="col-norm">Fiyat ✓CHECK&gt;0</text><text x="160" y="120" class="col-type">DECIMAL(10,2)</text>
+    <text x="10" y="138" class="col-norm">HazirlamaSuresiDk</text><text x="160" y="138" class="col-type">INT</text>
+    <text x="10" y="156" class="col-norm">IsActive</text>        <text x="160" y="156" class="col-type">BIT</text>
+  </g>
+
+  <!-- 7. SIPARISLER -->
+  <g transform="translate(370, 420)">
+    <rect class="tbl-bg" width="280" height="240" rx="6"/>
+    <rect class="tbl-header" width="280" height="28" rx="6"/>
+    <text class="tbl-title" x="140" y="19" text-anchor="middle">SIPARISLER</text>
+    <text x="10" y="48"  class="col-pk">PK SiparisID</text>          <text x="190" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-fk">FK MusteriID</text>          <text x="190" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-fk">FK RestoranID</text>         <text x="190" y="84" class="col-type">INT</text>
+    <text x="10" y="102" class="col-fk">FK KuryeID (NULL ok)</text>  <text x="190" y="102" class="col-type">INT</text>
+    <text x="10" y="120" class="col-fk">FK AdresID</text>            <text x="190" y="120" class="col-type">INT</text>
+    <text x="10" y="138" class="col-norm">SiparisTarihi</text>       <text x="190" y="138" class="col-type">DATETIME</text>
+    <text x="10" y="156" class="col-norm">TeslimTarihi</text>        <text x="190" y="156" class="col-type">DATETIME</text>
+    <text x="10" y="174" class="col-norm">ToplamTutar ✓CHECK</text>  <text x="190" y="174" class="col-type">DECIMAL(12,2)</text>
+    <text x="10" y="192" class="col-norm">OdemeYontemi ✓CHECK</text> <text x="190" y="192" class="col-type">NVARCHAR(20)</text>
+    <text x="10" y="210" class="col-norm">Durum ✓CHECK</text>        <text x="190" y="210" class="col-type">NVARCHAR(20)</text>
+    <text x="10" y="228" class="col-norm">AskidaMi</text>            <text x="190" y="228" class="col-type">BIT</text>
+  </g>
+
+  <!-- 8. SIPARISDETAYLARI -->
+  <g transform="translate(700, 420)">
+    <rect class="tbl-bg" width="240" height="140" rx="6"/>
+    <rect class="tbl-header" width="240" height="28" rx="6"/>
+    <text class="tbl-title" x="120" y="19" text-anchor="middle">SIPARISDETAYLARI</text>
+    <text x="10" y="48"  class="col-pk">PK SiparisDetayID</text>  <text x="160" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-fk">FK SiparisID (CASCADE)</text><text x="160" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-fk">FK UrunID</text>         <text x="160" y="84" class="col-type">INT</text>
+    <text x="10" y="102" class="col-norm">Adet ✓CHECK&gt;0</text> <text x="160" y="102" class="col-type">INT</text>
+    <text x="10" y="120" class="col-norm">BirimFiyat ✓CHECK</text><text x="160" y="120" class="col-type">DECIMAL(10,2)</text>
+  </g>
+
+  <!-- 9. RESTORANPUANLAMALARI -->
+  <g transform="translate(990, 420)">
+    <rect class="tbl-bg" width="260" height="160" rx="6"/>
+    <rect class="tbl-header" width="260" height="28" rx="6"/>
+    <text class="tbl-title" x="130" y="19" text-anchor="middle">RESTORANPUANLAMALARI</text>
+    <text x="10" y="48"  class="col-pk">PK PuanID</text>          <text x="180" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-uk">FK SiparisID UQ</text>    <text x="180" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-fk">FK MusteriID</text>       <text x="180" y="84" class="col-type">INT</text>
+    <text x="10" y="102" class="col-fk">FK RestoranID</text>      <text x="180" y="102" class="col-type">INT</text>
+    <text x="10" y="120" class="col-norm">Puan ✓CHECK 1-5</text>  <text x="180" y="120" class="col-type">TINYINT</text>
+    <text x="10" y="138" class="col-norm">Yorum</text>            <text x="180" y="138" class="col-type">NVARCHAR(500)</text>
+  </g>
+
+  <!-- ============ ASKIDA YEMEK MODULU (turuncu) ============ -->
+
+  <!-- 10. ASKIDABAGISLARI -->
+  <g transform="translate(50, 720)">
+    <rect class="tbl-bg-special" width="260" height="160" rx="6"/>
+    <rect class="tbl-header-special" width="260" height="28" rx="6"/>
+    <text class="tbl-title" x="130" y="19" text-anchor="middle">ASKIDABAGISLARI</text>
+    <text x="10" y="48"  class="col-pk">PK BagisID</text>           <text x="180" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-fk">FK MusteriID</text>         <text x="180" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-norm">BagisTutari ✓CHECK</text> <text x="180" y="84" class="col-type">DECIMAL(10,2)</text>
+    <text x="10" y="102" class="col-norm">BagisTuru ✓CHECK</text>   <text x="180" y="102" class="col-type">NVARCHAR(10)</text>
+    <text x="10" y="120" class="col-norm">AnonimMi</text>           <text x="180" y="120" class="col-type">BIT</text>
+    <text x="10" y="138" class="col-norm">BagisTarihi</text>        <text x="180" y="138" class="col-type">DATETIME</text>
+  </g>
+
+  <!-- 11. ASKIDAYEMEKHAVUZU -->
+  <g transform="translate(380, 720)">
+    <rect class="tbl-bg-special" width="260" height="160" rx="6"/>
+    <rect class="tbl-header-special" width="260" height="28" rx="6"/>
+    <text class="tbl-title" x="130" y="19" text-anchor="middle">ASKIDAYEMEKHAVUZU</text>
+    <text x="10" y="48"  class="col-pk">PK HavuzID (singleton)</text><text x="180" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-norm">GuncelBakiye ✓CHECK</text> <text x="180" y="66" class="col-type">DECIMAL(14,2)</text>
+    <text x="10" y="84"  class="col-norm">ToplamBagisTutari</text>   <text x="180" y="84" class="col-type">DECIMAL(14,2)</text>
+    <text x="10" y="102" class="col-norm">ToplamKullanimTutari</text><text x="180" y="102" class="col-type">DECIMAL(14,2)</text>
+    <text x="10" y="120" class="col-norm">SonGuncelleme</text>       <text x="180" y="120" class="col-type">DATETIME</text>
+    <text x="10" y="142" class="col-pk" font-size="11">✓ HavuzID = 1 zorunlu</text>
+  </g>
+
+  <!-- 12. ASKIDAKULLANIMLARI -->
+  <g transform="translate(710, 720)">
+    <rect class="tbl-bg-special" width="260" height="160" rx="6"/>
+    <rect class="tbl-header-special" width="260" height="28" rx="6"/>
+    <text class="tbl-title" x="130" y="19" text-anchor="middle">ASKIDAKULLANIMLARI</text>
+    <text x="10" y="48"  class="col-pk">PK KullanimID</text>         <text x="180" y="48" class="col-type">INT</text>
+    <text x="10" y="66"  class="col-fk">FK MusteriID</text>          <text x="180" y="66" class="col-type">INT</text>
+    <text x="10" y="84"  class="col-uk">FK SiparisID UQ</text>       <text x="180" y="84" class="col-type">INT</text>
+    <text x="10" y="102" class="col-norm">KullanilanTutar ✓CHECK</text><text x="180" y="102" class="col-type">DECIMAL(10,2)</text>
+    <text x="10" y="120" class="col-norm">KullanimTarihi</text>       <text x="180" y="120" class="col-type">DATETIME</text>
+  </g>
+
+  <!-- ========================= RELATIONSHIPS ========================= -->
+
+  <!-- Musteriler -> Adresler -->
+  <path class="rel-line" d="M 310 175 H 370" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="320" y="170">1:N</text>
+
+  <!-- Musteriler -> Siparisler -->
+  <path class="rel-line" d="M 180 320 V 540" marker-end="url(#arrow)"/>
+  <path class="rel-line" d="M 180 540 H 370"/>
+  <text class="rel-label" x="200" y="540">1:N sipariş</text>
+
+  <!-- Restoranlar -> Urunler -->
+  <path class="rel-line" d="M 1090 300 V 330" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="1095" y="320">1:N menü</text>
+
+  <!-- Kategoriler -> Urunler -->
+  <path class="rel-line" d="M 1080 200 V 240 M 1080 240 H 1090 V 330" stroke-dasharray="" />
+  <path class="rel-line" d="M 1080 200 V 240 H 1090 V 240" />
+  <path class="rel-line" d="M 1080 200 V 330" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="1015" y="260">1:N</text>
+
+  <!-- Restoranlar -> Siparisler -->
+  <path class="rel-line" d="M 660 250 H 650 V 420" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="555" y="400">1:N sipariş alır</text>
+
+  <!-- Kuryeler -> Siparisler -->
+  <path class="rel-line" d="M 1360 280 V 600" />
+  <path class="rel-line" d="M 1360 600 H 650" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="900" y="595">0..1 : N (kurye atanmamış olabilir)</text>
+
+  <!-- Adresler -> Siparisler -->
+  <path class="rel-line" d="M 490 260 V 420" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="495" y="395">1:N teslim adresi</text>
+
+  <!-- Siparisler -> SiparisDetaylari -->
+  <path class="rel-line" d="M 650 490 H 700" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="655" y="485">1:N CASCADE</text>
+
+  <!-- Urunler -> SiparisDetaylari -->
+  <path class="rel-line" d="M 970 420 H 950 V 490 H 940" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="947" y="450">1:N</text>
+
+  <!-- Siparisler -> Puanlamalari -->
+  <path class="rel-line" d="M 650 540 H 990" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="800" y="535">1:0..1 UNIQUE</text>
+
+  <!-- Musteriler -> Bagislari -->
+  <path class="rel-line" d="M 90 320 V 720" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="95" y="540">1:N bağış yapar</text>
+
+  <!-- Musteriler -> Kullanimlari -->
+  <path class="rel-line" d="M 240 320 V 690 H 800 V 720" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="600" y="685">1:N havuzdan yararlanır (onaylı)</text>
+
+  <!-- Siparisler -> Kullanimlari -->
+  <path class="rel-line" d="M 510 660 V 690 H 800 V 720" marker-end="url(#arrow)"/>
+  <text class="rel-label" x="520" y="685">1:0..1 UNIQUE</text>
+
+  <!-- TRIGGER: Bagislari -> Havuz -->
+  <path class="rel-trig" d="M 310 800 H 380" marker-end="url(#arrow-trig)"/>
+  <text class="rel-label-trig" x="313" y="795">trigger: havuz +</text>
+
+  <!-- TRIGGER: Kullanimlari -> Havuz -->
+  <path class="rel-trig" d="M 710 800 H 640" marker-end="url(#arrow-trig)"/>
+  <text class="rel-label-trig" x="643" y="795">trigger: havuz -</text>
+
+  <!-- ========================= LEGEND ========================= -->
+  <g transform="translate(1000, 720)">
+    <rect x="0" y="0" width="470" height="200" rx="6" fill="#fafafa" stroke="#cccccc"/>
+    <text x="10" y="20" font-weight="bold" fill="#1f4e79" font-size="14">Lejant</text>
+
+    <text x="10" y="45" class="col-pk">PK</text>
+    <text x="40" y="45" class="legend-text">Primary Key</text>
+
+    <text x="10" y="63" class="col-fk">FK</text>
+    <text x="40" y="63" class="legend-text">Foreign Key</text>
+
+    <text x="10" y="81" class="col-uk">UQ</text>
+    <text x="40" y="81" class="legend-text">Unique Key / Constraint</text>
+
+    <text x="10" y="99" class="col-norm">✓CHECK</text>
+    <text x="80" y="99" class="legend-text">CHECK constraint (1-5, &gt;0, IN-list vb.)</text>
+
+    <line x1="10" y1="115" x2="50" y2="115" class="rel-line" marker-end="url(#arrow)"/>
+    <text x="60" y="119" class="legend-text">Yabancı anahtar ilişkisi (referans bütünlüğü)</text>
+
+    <line x1="10" y1="135" x2="50" y2="135" class="rel-trig" marker-end="url(#arrow-trig)"/>
+    <text x="60" y="139" class="legend-text">Trigger ile otomatize edilen iş kuralı</text>
+
+    <rect x="10" y="150" width="20" height="14" class="tbl-bg-special"/>
+    <text x="40" y="161" class="legend-text">"Askıda Yemek" modülü tabloları</text>
+
+    <text x="10" y="185" class="legend-text" font-style="italic" fill="#666">Tüm tablolarda Soft Delete için IsActive (BIT) sütunu mevcuttur.</text>
+  </g>
+
+</svg>
