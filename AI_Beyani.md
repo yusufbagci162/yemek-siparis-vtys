@@ -64,20 +64,7 @@ Sınav ve özgünlük doğrulamasında **her satır kodu ben yazmış gibi açı
 
 ---
 
-## 4. Geliştirme Sürecinin Versiyonlanması
 
-`git_commit_script.sh` dosyası, projenin tek seferde değil **aşamalı commit'lerle** GitHub'a yüklenmesi için hazırlanmıştır. Aşamalar:
-
-1. İlk commit: README + ER diyagramı taslağı
-2. İkinci commit: Tablo (DDL) tasarımı
-3. Üçüncü commit: Indexler
-4. Dördüncü commit: Views
-5. Beşinci commit: Triggers
-6. Altıncı commit: Mock veriler
-7. Yedinci commit: Analitik sorgular
-8. Sekizinci commit: Final düzenlemeler + AI beyanı
-
-Bu sayede yönergedeki "son gece tek commit eksi puan" maddesi karşılanır ve gerçek bir geliştirme akışı sergilenir.
 
 ---
 
